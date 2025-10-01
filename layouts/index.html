@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <h1>Latest Episodes</h1>
+  {{ with .Content }}
+    <div class="content">{{ . }}</div>
+  {{ end }}
+
+  <div class="cards">
+    {{ $episodes := where .Site.RegularPages "Section" "episode" }}
+    {{ range first 12 (sort $episodes "Date" "desc") }}
+      <article class="card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="meta">{{ .Date.Format "02 Jan 2006" }}</p>
+        {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+        <p><a class="btn" href="{{ .RelPermalink }}">Read Episode →</a></p>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}
