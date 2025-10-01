@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ if .Content }}
+    <div class="content">{{ .Content }}</div>
+  {{ end }}
+  <div class="cards">
+    {{ range .Paginator.Pages }}
+      <article class="card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="meta">{{ .Date.Format "02 Jan 2006" }}</p>
+        {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+        <p><a class="btn" href="{{ .RelPermalink }}">Read Episode →</a></p>
+      </article>
+    {{ end }}
+  </div>
+  {{ template "_internal/pagination.html" . }}
+{{ end }}

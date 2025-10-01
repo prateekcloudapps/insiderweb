@@ -1,0 +1,19 @@
+{{ $title := or .Params.seo_title .Title }}
+{{ $desc := or .Params.seo_description .Params.description | default .Site.Params.description }}
+{{ $image := or .Params.cover .Site.Params.defaultImage }}
+
+<title>{{ $title }} | {{ .Site.Title }}</title>
+<meta name="description" content="{{ $desc }}"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="{{ $title }} | {{ .Site.Title }}"/>
+<meta property="og:description" content="{{ $desc }}"/>
+<meta property="og:image" content="{{ $image }}"/>
+<meta property="og:url" content="{{ .Permalink }}"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }} | {{ .Site.Title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $image }}">
