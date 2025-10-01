@@ -1,18 +1,49 @@
-:root { --bg:#0b1020; --card:#111831; --text:#e8ecf1; --muted:#b6c0d1; --brand:#7dc4ff; }
+:root { --bg:#0b1020; --panel:#0f1730; --card:#121b37; --text:#e8ecf1; --muted:#b6c0d1; --brand:#7dc4ff; --accent:#9ff0ff; }
 * { box-sizing: border-box; }
-body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-.container { width: min(100%, 960px); margin: 0 auto; padding: 0 16px; }
-.site-header, .site-footer { background:#0c1328; }
-.site-header .container, .site-footer .container { display:flex; align-items:center; justify-content:space-between; padding:16px; }
-.brand { color:var(--text); text-decoration:none; font-weight:700; }
-.site-nav a { color:var(--muted); margin-left:16px; text-decoration:none; }
-.site-main { padding:32px 0; }
-.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
-.card { background:var(--card); padding:16px; border-radius:14px; }
-.btn { background:var(--brand); color:#00152a; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600; }
-.post .cover { width:100%; border-radius:12px; margin:8px 0 16px; }
-.embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-.embed iframe { position: absolute; top:0; left: 0; width:100%; height:100%; border:0; }
-.meta { color:var(--muted); }
-.tags .tag { display:inline-block; margin-right:8px; color:#9fc6ff; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { width: min(100%, 1100px); margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header { position: sticky; top:0; z-index:10; background:rgba(12,19,40,.85); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.06); }
+.nav { display:flex; align-items:center; justify-content:space-between; min-height:64px; }
+.brand { color:var(--text); font-weight:800; letter-spacing:.2px; }
+.site-nav a { color:var(--muted); margin-left:18px; }
+.site-nav .cta { background:var(--brand); color:#00152a; padding:8px 12px; border-radius:10px; font-weight:700; }
+.site-main { padding:32px 0 60px; }
+
+/* Hero */
+.hero { background: linear-gradient(180deg, rgba(125,196,255,.12), rgba(0,0,0,0)); padding: 40px 0 10px; border-bottom:1px solid rgba(255,255,255,.06); }
+.hero-inner { text-align:left; }
+.hero h1 { font-size:42px; margin: 0 0 8px; }
+.hero p { color: var(--muted); margin:0 0 18px; font-size:18px; }
+.cta-row { display:flex; gap:12px; flex-wrap:wrap; }
+.btn { background:var(--brand); color:#00152a; padding:10px 14px; border-radius:12px; display:inline-block; font-weight:700; }
+.btn.ghost { background:transparent; color:var(--accent); border:1px solid rgba(255,255,255,.18); }
+.btn.small { padding:6px 10px; border-radius:10px; font-weight:600; }
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.section-title { margin: 26px 0 14px; font-size:24px; }
+
+/* Cards */
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px; }
+.card { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:18px; overflow:hidden; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.card .cover { width:100%; height:180px; object-fit:cover; display:block; }
+.card-body { padding:16px; }
+.meta { color:var(--muted); font-size:14px; margin:0 0 6px; }
+.excerpt { color: var(--muted); }
+
+/* Post */
+.post .post-head { margin-bottom:18px; }
+.post .cover-lg { width:100%; max-height:420px; object-fit:cover; border-radius:16px; margin:8px 0 12px; }
+.listen-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; background:var(--panel); padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.06); }
+audio { width:280px; max-width:100%; }
 .content p { margin: 0 0 1em; }
+.share { margin-top:16px; display:flex; gap:12px; align-items:center; color:var(--muted); }
+.pager { margin-top:18px; display:flex; justify-content:space-between; }
+.tags .tag { display:inline-block; margin-right:8px; color:#9fc6ff; }
+
+/* Footer */
+.site-footer { background:#0c1328; border-top:1px solid rgba(255,255,255,.06); }
+.site-footer .foot { display:flex; align-items:center; justify-content:space-between; padding:18px 0; color: var(--muted); }
