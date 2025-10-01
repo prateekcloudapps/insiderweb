@@ -1,17 +1,34 @@
 {{ define "main" }}
-  <h1>Latest Episodes</h1>
-  {{ with .Content }}
-    <div class="content">{{ . }}</div>
-  {{ end }}
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Insider Opinion</h1>
+      <p>Deep dives with founders & operators — AI, side hustles, and Indian entrepreneurship.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="/episode/">Browse Episodes</a>
+        <a class="btn ghost" href="https://open.spotify.com/" target="_blank" rel="noopener">Listen on Spotify</a>
+        <a class="btn ghost" href="https://youtube.com/" target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </div>
+  </section>
 
+  <h2 class="section-title">Latest Episodes</h2>
   <div class="cards">
     {{ $episodes := where .Site.RegularPages "Section" "episode" }}
     {{ range first 12 (sort $episodes "Date" "desc") }}
       <article class="card">
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <p class="meta">{{ .Date.Format "02 Jan 2006" }}</p>
-        {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
-        <p><a class="btn" href="{{ .RelPermalink }}">Read Episode →</a></p>
+        {{ with .Params.cover }}
+          <a href="{{ $.RelPermalink }}"><img class="cover" src="{{ . }}" alt="{{ $.Title }}"></a>
+        {{ end }}
+        <div class="card-body">
+          <p class="meta">{{ .Date.Format "02 Jan 2006" }}</p>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.description }}<p class="excerpt">{{ . }}</p>{{ end }}
+          <div class="row">
+            <a class="btn small" href="{{ .RelPermalink }}">Read Episode →</a>
+            {{ with .Params.spotify }}<a class="btn small ghost" href="{{ . }}" target="_blank" rel="noopener">Spotify</a>{{ end }}
+            {{ with .Params.youtube }}<a class="btn small ghost" href="{{ . }}" target="_blank" rel="noopener">YouTube</a>{{ end }}
+          </div>
+        </div>
       </article>
     {{ end }}
   </div>
