@@ -1,0 +1,21 @@
+baseURL = "https://example.com/"
+title = "Insider Opinion Podcast"
+languageCode = "en-us"
+paginate = 10
+summaryLength = 30
+enableRobotsTXT = true
+
+# Set to your GA4 ID when ready (e.g., G-XXXXXXXXXX)
+googleAnalytics = ""
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params]
+  description = "Conversations on AI, side hustles, and Indian entrepreneurship. Long-form interviews, sharp insights, and real numbers."
+  author = "Insider Opinion"
+  defaultImage = "/images/og-default.jpg"
+  twitter = "@insideropinion"
+
+[markup.goldmark.renderer]
+unsafe = true
